@@ -1,14 +1,13 @@
-# gerador_pomar.py - NAO ALTERE ESTE ARQUIVO
 import random
 
-CUSTO = {".": 1, "~": 4}  # carreador = 1, solo encharcado = 4
+CUSTO = {".": 1, "~": 4}
 BLOQUEADO = "#"
 
 def gerar_pomar(matricula: int, n: int = 12):
     rng = random.Random(matricula % 1_000_000)
     g = [[("#" if rng.random() < 0.20 else ("~" if rng.random() < 0.40 else "."))
           for _ in range(n)] for _ in range(n)]
-    # garante ao menos um caminho do portao ate o ponto de coleta
+    
     i = j = 0
     g[0][0] = "."
     while (i, j) != (n - 1, n - 1):
